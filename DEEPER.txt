@@ -1,0 +1,53 @@
+							THIS
+6 cách sử dụng
+1. tham chiếu tới biến instance của class hiện tại
+public class Student11 {
+    int id;
+    String name;
+ 
+    Student11(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+2. Sử dụng this() gọi Constructor của class hiện tại
+Rule: this() phải được khai báo dòng lệnh đầu tiên trong Constructor
+=> gọi một chuỗi các constructor
+public class Student14 {
+    int id;
+    String name;
+    String city;
+ 
+    Student14(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+ 
+    Student14(int id, String name, String city) {
+        this(id, name);					// now no need to initialize id and name
+        this.city = city;
+    }
+ 
+    void display() {
+        System.out.println(id + " " + name + " " + city);
+    }
+ 
+    public static void main(String args[]) {
+        Student14 e1 = new Student14(111, "Viet");
+        Student14 e2 = new Student14(222, "Nam", "Ha Noi");
+        e1.display();
+        e2.display();
+    }
+}
+
+3. Gọi method của class hiện tại
+public class A {						public class A {
+
+	void m(){}							void m(){}
+						compiler
+	void n(){				------->		void n(){	
+		m();								this.m();
+	}								}
+}								}
+
