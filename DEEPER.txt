@@ -51,3 +51,8 @@ public class A {						public class A {
 	}								}
 }								}
 
+						THE == OPERATOR
+- Là OPERATOR to compare address where an object được cấp phát
+
+operator /ˈɒpəreɪtə(r)/: toán tử
+

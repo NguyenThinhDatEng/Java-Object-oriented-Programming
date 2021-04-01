@@ -1,0 +1,187 @@
+						Tính kế thừa (Inheritance)
+- Mũi tên với hình tam giác rỗng ruột => quan hệ kế thừa
+- Lớp được thừa hưởng những property and method từ class khác:  Derived Class(dẫn xuất)
+								SubClass(lớp con)
+- class bị class khác kế thừa:  Base Class (cơ sở)
+				Parent Class (lớp cha)
+- Keyword: extends
+	   super
+For example:
+class Person{}
+class Student extends Person{}
+
+- java is a simple, object-oriented, distributed, interpreted, robust, secure, architecture-neutral, portable, high
+performance, multi-threaded, and dynamic language.
+
+- Type of Inheritance in Java
+  + single (khi một class không được inherit class nào -> được inherit directly từ Opject class)
+	ClassA <- ClassB
+  + multilevel (Kế thừa nhiều cấp - class inherit từ 1 class khác Object)
+	ClassA <- ClassB <- Class C
+  + hierachical (Kế thừa thứ bậc)
+	ClassC -> ClassA <- ClassB
+	
+*** Two Charateristics Of Inheritance
+
+1. the child class must not inherit private properties and methods from the parent class.
+For example:
+class Person
+{
+	private String name;
+	...
+}
+
+class Student extends Person{
+	public Student(){
+		name = "Anh";
+}
+=> Error
+=> To access the private properties of parent class, you have to pass the parent's setter and getter
+
+2. Constructor of child class always calls the constructor of the parent class
+Constructor của lớp con luôn gọi tới constructor của lớp cha
+Nếu không chỉ rõ cần gọi tới constructor nào của lớp cha => lớp con luôn gọi tới constructor mặc định của lớp cha
+For example:
+class Person{
+	public Person() {
+		System.out.println("Person constructor");
+	}
+}
+
+class Student extends Person{
+	public Student() {
+		System.out.println("Student constructor");
+	}
+}
+
+class Entry {
+	public static void main(String[] args) {
+		Student s = new Student();
+	}
+}
+
+Result:
+Person constructor
+Student constructor
+
+=> constuctor mặc định của parent class đã được gọi cùng constructor của subClass
+=> Khi lớp cha không có constructor mặc định mà lớp con không chỉ rõ cần gọi tới constructor nào của parent class => ERROR
+For example:
+class Person{
+	private String name;
+	public Person(String name)
+	{
+		this.name = name;
+	}
+}
+class Student extends Person {
+}
+
+=>ERROR : Add constructor 'Student(String)';
+
+=> super để chỉ cho subClass biết cần phải gọi tới constructor nào của parent Class
+	 để truy xuất tới các property và method của parent class
+For example:
+class Person {
+	private String name;
+	public Person(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+class Student extends Person {
+	public Student(String name) {
+		super(name);
+	}
+}
+public class Entry {
+	public static void main(String[] args) {
+		Student s1 = new Student("Trung");
+		System.out.println(s1.getName());
+	}
+}
+
+Result:
+	Trung
+=> super(name) chính là gọi tới constructor một tham số của parent Class
+
+=> super khác this ở chỗ super sẽ tham chiếu tới parent class còn this sẽ tham chiếu ở curently class.
+
+							@OVERRIDE
+You can completely overide the method of the superclass.
+For example:
+class SuperClass{
+	public void display() {
+		System.out.println("Hello from SuperClass");
+	}
+}
+
+class SubClass extends SuperClass{
+	@Override
+	public void display() {
+		System.out.println("Hello from SubClass");
+	}
+}
+
+- Là 1 annotation để chú thích rằng method of subClass ghi đè method of superClass.
+- OPTIONAL
+- Trong TH parent class bị đè, vẫn có thể gọi tới nó bằng syntax: super.<method_name>();
+- Lợi ích
+	+ Nếu 1 method được annotated với @OVERRIDE thì program sẽ kiểm tra method này có thực sự OVERRIDE hay không, nếu không sẽ
+	  report error => ngăn được những error đánh máy (gõ nhầm method name, nhầm tham số)
+	+ Giúp người khác hiểu
+- Cách sử dụng
+  Để ghi đè method of parent class, method of subclass phải có phạm vi truy cập >= phạm vi truy cập của method of parent class
+  PUBLIC > PROTECTED > DEFAULT > PRIVATE
+
+							OJECT CLASS
+- Tất cả các class trong java đều được kế thừa từ oject class
+- Một số method:
+ + toString():  biểu diễn object dưới dạng xâu (khi gọi Sysout với một object => chương trình sẽ hiển thị toString() method
+		Thay thế cho display() method
+ + equals(): Không thể sử dụng == to compare 2 objects, phải tự viết method to compare or use equals() method that the Object class provided
+	     => chỉ cần ghi đè lại this method
+ 	     @Override
+	     public boolean equals(Object obj){
+	     }
+
+						UP-CASTING	DOWN-CASTING
+*** Up-casting
+- Khi variable of parent class tham chiếu tới object of child class (object of child class bị chuyển kiểu dữ liệu về class parent) 
+For example:
+class Animal{
+	public void sound(){
+		System.out.prinln("some sound");
+	}
+}
+class Cat extends Animal{
+	public void sound(){
+		System.out.println("meow meow");
+}
+
+public class Entry {
+	public static void main(String[] args) {
+		Animal animal = new Cat();
+		animal.sound()
+}
+
+=> RESULT
+meow meow
+
+=> các object of Cat class đã được trỏ tới bởi variable thuộc Animal class (chuyển kiểu về class Animal)							
+
+Annotation: 
+1. Khi variable of parent class tham chiếu tới object của subClass thì this variable chỉ có thể gọi tới các property and
+method CÓ Ở PARENT CLASS
+2. Nếu subClass ghi đè thì method được gọi sẽ ở subClass
+
+ANNOTATION /ˌænəˈteɪʃn/ : NOTE
+DIRECTLY /dəˈrektli/
+SPECIFY /ˈspesɪfaɪ/ : chỉ rõ
+EXECUTE /ˈeksɪkjuːt/ : Thực thi
+OVERRIDE /ˌəʊvəˈraɪd/ : ghi đè

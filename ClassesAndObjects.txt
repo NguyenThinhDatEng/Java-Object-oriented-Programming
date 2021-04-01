@@ -46,7 +46,7 @@ protect -> tương tự default, ít hạn chế hơn ở property and method c�
 (tính kế thừa)
 public -> các properties and methods có thể được truy xuất từ bất cứ đâu
 
-Constructor (phương thức khởi tạo)
+No-Arg Constructor (phương thức khởi tạo không đối số)
 - phương thức đặc biệt => tự động được gọi khi khởi tạo 1 đối tượng
 - Phương thức thông thường: dùng toán tử . để gọi tới
 - 1. Không được định nghĩa kiểu trả về
@@ -63,7 +63,7 @@ class Student {
 	}
 }
 NOTE: không thể dùng private key để khai báo constructor
-***constructor có tham số
+Parameterized Constructor (phương thức khởi tạo có tham số)
 class Student {
 	String name;
 	int age;
