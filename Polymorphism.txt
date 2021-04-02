@@ -1,0 +1,42 @@
+						Polymorphism (Tính đa hình)
+= poly + morhps
+	English: one thing in many form
+- Được thể hiện trong code dưới 3 hình thức:
+	+ Overloading
+	+ Method override
+	+ Polymorphic objects (đa hình thông qua các đối tượng đa hình)
+1. Polymorphism with Overloading
+   Eg:  method cộng: (int) a + b, (double) a + b, (int) a + b + c ...
+	=> cùng method nhưng nhiều "form"
+2. Polymorphism with Method override
+   Cùng mục đích công việc (cùng tên method) => nhiều cách tính khác nhau ("forms")
+3. Polymorphism object
+   Up-casting => variable of parent class có thể tham chiếu tới object của các lớp con => variable of parent class cũng có
+		 nhiều "forms"
+		 Annimal a = new Animal();
+		 a.sound();
+		 a = new Dog();
+		 a.sound();
+=> variable a có thể đại diện cho các đối tượng của các class: Animal, Dog.
+						Variable Hiding
+- occurs when the child class declares an attribute with same name as the parent class's property.
+  The property of the parent class will not be overridden by the child class but it will be hidden by the child class
+  Eg:
+     	class SuperClass{
+		int x;
+     	}
+	class SubClass extends SuperClass{
+		int x;
+	}
+	public class Entry {
+		public static void main(String[] args)
+			SuperClass a = new SubClass();
+			System.out.println(a.x);
+			System.out.println(((SubClass)a).x);
+		}
+	}
+Annotation: 
+1. Khi variable of parent class tham chiếu tới object của subClass thì this variable chỉ có thể gọi tới các property and
+method CÓ Ở PARENT CLASS
+2. Nếu subClass ghi đè thì method được gọi sẽ ở subClass
+   Không thể ghi đè property

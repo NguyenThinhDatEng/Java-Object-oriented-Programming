@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JavaOOP</name>
+	<name>Java-Object-oriented-Programming</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,26 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/com/home/classesandobjects/Constructor.java</name>
-			<type>1</type>
-			<location>D:/NguyenThinhDatSci/Java-Object-oriented-Programming/ClassesAndObjects/Constructor.java</location>
-		</link>
-		<link>
-			<name>src/com/home/classesandobjects/RectangleClass.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/NguyenThinhDatSci/Java-Object-oriented-Programming/ClassesAndObjects/RectangleClass.java</locationURI>
-		</link>
-		<link>
-			<name>src/com/home/classesandobjects/StudentArray.java</name>
-			<type>1</type>
-			<location>D:/NguyenThinhDatSci/Java-Object-oriented-Programming/ClassesAndObjects/StudentArray.java</location>
-		</link>
-		<link>
-			<name>src/com/home/classesandobjects/StudentClass.java</name>
-			<type>1</type>
-			<location>D:/NguyenThinhDatSci/Java-Object-oriented-Programming/ClassesAndObjects/StudentClass.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>

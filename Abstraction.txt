@@ -1,0 +1,35 @@
+							Abstraction
+- Là 1 tính chất, chỉ tập trung vào những tính năng của object và ẩn đi những thông tin không cần thiết
+=> quan tâm hơn vào những tính năng thay vi cách nó thực hiện
+Eg:
+   Khi rút ATM -> không quan tâm cách máy hoạt động, thành phần trong ATM -> chỉ quan tâm tính năng rút tiền
+=> các thông tin không cần thiết bị ẩn đi
+   khi sử dụng 1 object -> chỉ quan tâm đến method cần thiết, chỉ cần biết method đó được dùng để làm gì
+			-> không quan tâm đến sourcecode, các method khác
+- Sử dụng abstract class (lớp trừu tượng) và interface
+
+1. Abstraction class
+- Là lớp được khai báo với keyword: abstract
+	a, Nếu 1 class là abstraction -> không thể initilaze object của class đó
+					-> chỉ initilaze object của subClass
+	Eg:
+		abstract class Animal{
+		}
+		class Cat extends Animal{
+		}
+
+		public class Entry{
+			public static void main(...){
+				Animal a = new Cat();
+			}
+		}
+	b, abstraction class có thể có abstraction methods -> chỉ có phần declare, không có phần thân
+		abstract class Animal{
+			public abstract void makeSound():
+
+		}
+	c, Nếu subClass kế thừa abstraction class => subClass phải ghi đè all các abstraction method
+- Mục đích: 
++ Làm parent class cho các class có cùng bản chất
++ Việc sử dụng abtract method, abstract class giúp ẩn đi được cách cài đặt của phương thức
+Tuy nhiên vẫn có thể declare properties, methods
