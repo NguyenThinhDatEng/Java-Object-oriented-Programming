@@ -24,12 +24,47 @@ Eg:
 			}
 		}
 	b, abstraction class có thể có abstraction methods -> chỉ có phần declare, không có phần thân
+		For example:
 		abstract class Animal{
 			public abstract void makeSound():
 
 		}
 	c, Nếu subClass kế thừa abstraction class => subClass phải ghi đè all các abstraction method
 - Mục đích: 
-+ Làm parent class cho các class có cùng bản chất
++ Làm lớp cha cho các class có cùng bản chất
 + Việc sử dụng abtract method, abstract class giúp ẩn đi được cách cài đặt của phương thức
-Tuy nhiên vẫn có thể declare properties, methods
+Tuy nhiên vẫn có thể declare properties, methods có phần thân nên abstraction class -> không hoàn toàn
+=> Để đạt được tính trừu tượng hoàn toàn cần sd tới interface
+							Interface
+- Dùng để lưu trữ abstraction mehthods và các const.
+- Đặc điểm
+	1. Giống với abstraction class => không thể khởi tạo object của interface => chỉ khởi tạo được đối tượng của subClass
+	2. all of methods in Interface đều được complier hiểu là abstraction method và all of variables in Interface đề được
+	   complier hiểu là các const.
+	Eg:
+	interface abc{
+		int N = 4;
+		void move();
+	}
+	COMPLIER--------->
+	interface abc{
+		public static final int N = 4;
+		public abstract void move();
+	}
+	
+	3. 1 class có thể kế thừa nhiều interface.
+	   Java -> simple -> Not đa thừa kế -> interface chỉ chứa method rỗng -> Java cho phép kế thừa nhiều interface
+	   syntax:
+		class <subClass_name> implements <interface_name01>,<interface_name02>{
+
+		}
+
+=> Trong thực tế, sử dụng rất nhiều interface, mỗi a class thường tạo 1 interface riêng để thể hiện tính năng của lớp đó
+và giao tiếp với đối tượng thông qua interface.
+Eg:
+	Custumer class ~ interface ICustumer
+	Employee class ~ interface IEmployee
+
+explanation /ˌekspləˈneɪʃn/ (n): giải thích
+diagram /ˈdaɪəɡræm/: sơ đồ
+wage /weɪdʒ/: tiền công

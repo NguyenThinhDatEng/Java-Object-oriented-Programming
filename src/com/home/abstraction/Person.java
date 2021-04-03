@@ -1,6 +1,6 @@
 package com.home.abstraction;
 
-public class Person {
+public abstract class Person {
 	
 	private String name;
 	private String address;
@@ -26,6 +26,6 @@ public class Person {
 		this.address = address;
 	}
 	
-	
+	public abstract void display();
 	
 }
